@@ -41,6 +41,23 @@ Install `Studio Code Server` from Home Assistant's Supervisor Add-on Store to ea
 
 No additional python packages are required.
 
+### AppDaemon configuration
+
+[AppDaemon discovery and tracking](https://hacs.xyz/docs/categories/appdaemon_apps) enabled for HACS.
+
+Connect AppDaemon with HASS if not yet done.
+Create a new long-lived access tokens in the user profile for appdaemon, store it in `/config/secrets.yaml`
+and make sure to have the 2 last lines in `/config/appdaemon/appdaemon.yaml`
+
+```
+plugins:
+    HASS:
+      type: hass
+      ha_url: http://homeassistant.local:8123
+      token: !secret appdaemon_token
+```
+
+
 ### HACS configuration
 
 To to get `ELCO Remocon.net AppDaemon` work with HACS, you will need to make sure that you enabled AppDaemon automation in HACS, as these are not enabled by default:
@@ -51,7 +68,7 @@ To to get `ELCO Remocon.net AppDaemon` work with HACS, you will need to make sur
 - Find HACS and click on Configure
 - In the window that opens, make sure that Enable AppDaemon apps discovery & tracking is checked, or check it and click Submit
 
-[AppDaemon discovery and tracking](https://hacs.xyz/docs/categories/appdaemon_apps) enabled for HACS.
+
 
 ### Remocon-Net configuration
 
